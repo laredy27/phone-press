@@ -28,9 +28,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 define('prefix', 'mm');
-define('PLUGIN_URI', plugin_dir_url(__FILE__));
-define('PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('TEXT_DOMAIN', 'phone-press');
+define('PP_URI', plugin_dir_url(__FILE__));
+define('PP_PATH', plugin_dir_path(__FILE__));
+define('PP_DOMAIN', 'phone-press');
 Class Phone_Press{
     public function __construct() {
         do_action("phonepress_init");
@@ -44,7 +44,7 @@ Class Phone_Press{
         
         //add_action('rest_api_init', array($this, 'register_api_routes'));
         $this->register_api_routes();
-        require PLUGIN_PATH . "/admin/admin-pages.php";
+        require PP_PATH . "/admin/admin-pages.php";
     }
     public function activate(){
         
@@ -54,7 +54,7 @@ Class Phone_Press{
     }
     
     private function _require_plugin_files(){
-       $inc_files = glob( PLUGIN_PATH . '/inc/*.php' );
+       $inc_files = glob( PP_PATH . '/inc/*.php' );
        $files = array_merge( $inc_files );
        foreach ($files as $file) {
            require_once( $file );
